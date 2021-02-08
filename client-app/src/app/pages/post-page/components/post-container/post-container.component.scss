@@ -1,0 +1,57 @@
+@import "~src/styles.scss";
+
+.post_view_container {
+    height: 100%;
+
+    .tool_container {
+        box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        padding: 11px 22px;
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        @media (max-width: 965px) {
+            justify-content: flex-start;
+        }
+
+        .filter_tool {
+            display: inherit;
+            align-items: center;
+
+            .mat-field {
+                margin-right: 5px;
+            }
+        }
+
+        .btn_tool {
+            @include basic_ico_btn;
+
+            svg {
+                cursor: pointer;
+                height: 35px;
+                width: 35px;
+
+                &:hover {
+                    fill: red;
+                }
+            }
+        }
+    }
+
+    .post_item_container {
+        overflow: auto;
+        height: 90%;
+
+        .post_item {
+            width: 97%;
+            margin: 0 auto;
+
+            @media (max-width: 540px) {
+                width: 90%;
+            }
+        }
+    }
+}

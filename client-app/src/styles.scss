@@ -1,0 +1,35 @@
+@import "~src/assets/scss/mixins.scss";
+
+body,
+html {
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+    background-color: #eee;
+    font-family: "Roboto";
+}
+
+.mat-tooltip.tooltip {
+    font-size: 16px;
+}
+
+.my-mat-field {
+    .mat-form-field-wrapper {
+        padding: 0;
+
+        .mat-form-field-infix {
+            .mat-form-field-label-wrapper {
+                label {
+                    color: #000000 !important;
+                }
+            }
+        }
+    }
+}
+
+.calendar_container {
+    .input {
+        height: 59px !important;
+        padding: 0 !important;
+    }
+}

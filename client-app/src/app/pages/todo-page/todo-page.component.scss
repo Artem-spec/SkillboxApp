@@ -1,0 +1,74 @@
+@import "~src/styles.scss";
+
+.body {
+    width: 90%;
+    height: 87%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    @media (max-width: 1090px) {
+        width: 100%;
+    }
+
+    @media (max-width: 640px) {
+        width: 100%;
+    }
+
+    .body_right {
+        padding: 10px;
+        width: 20%;
+
+        .btn_open {
+            display: none;
+        }
+    }
+
+    .modal_container {
+        display: flex;
+        height: fit-content;
+        max-height: 380px;
+        width: 350px;
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        transition: all 1s ease-in-out;
+
+        .btn_open {
+            z-index: 4;
+            display: block;
+            width: 50px;
+            height: 50px;
+            visibility: visible;
+            @include basic_ico_btn;
+        }
+
+        .menu_block {
+            z-index: 4;
+            margin-left: 5px;
+            width: 330px;
+        }
+    }
+
+    .hidden {
+        right: -300px;
+    }
+
+    .visible {
+        z-index: 4;
+        right: 0;
+    }
+
+    .body_left {
+        padding-top: 10px;
+        width: 80%;
+
+        @media (max-width: 991px) {
+            width: 100%;
+        }
+
+        @media (max-width: 640px) {
+        }
+    }
+}

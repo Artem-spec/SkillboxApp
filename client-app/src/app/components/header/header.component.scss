@@ -1,0 +1,26 @@
+@import "~src/styles.scss";
+
+.header_container {
+    height: 100%;
+    padding: 0 25px;
+    background-color: lightblue;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+
+    .nav_tool {
+        position: absolute;
+        top: 10px;
+
+        button {
+            margin: 0 2px;
+            @include basic_btn(13px);
+            padding: 2px;
+        }
+
+        .actice {
+            color: red;
+        }
+    }
+}

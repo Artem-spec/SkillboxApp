@@ -1,0 +1,30 @@
+<p>Авторизация</p>
+
+<hr>
+
+<form (ngSubmit)="logIn()" #form="ngForm">
+
+  <div mat-dialog-content class="dialog">
+
+    <div class="content">
+
+      <mat-form-field [color]="'warn'">
+        <mat-label>Логин</mat-label>
+        <input autocomplete="off" name="login" #login="ngModel" required matInput [(ngModel)]="userName">
+      </mat-form-field>
+
+      <mat-form-field [color]="'warn'">
+        <mat-label>Пароль</mat-label>
+        <input type="password" autocomplete="off" name="pass" #pass="ngModel" required matInput [(ngModel)]="password">
+      </mat-form-field>
+
+    </div>
+
+  </div>
+
+  <div mat-dialog-actions class="footer">
+    <button class="btn" (click)="cLoseDialog()" type="button" cdkFocusInitial>Отмена</button>
+    <button class="btn" [disabled]="!form.form.valid" type="submit">Войти</button>
+  </div>
+
+</form>

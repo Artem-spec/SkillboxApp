@@ -1,0 +1,8 @@
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\bin\Debug\netcoreapp3.1\SkillBox.Infrastructure.deps.json
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\bin\Debug\netcoreapp3.1\SkillBox.Infrastructure.dll
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\bin\Debug\netcoreapp3.1\SkillBox.Infrastructure.pdb
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\obj\Debug\netcoreapp3.1\SkillBox.Infrastructure.AssemblyInfoInputs.cache
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\obj\Debug\netcoreapp3.1\SkillBox.Infrastructure.AssemblyInfo.cs
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\obj\Debug\netcoreapp3.1\SkillBox.Infrastructure.csproj.CoreCompileInputs.cache
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\obj\Debug\netcoreapp3.1\SkillBox.Infrastructure.dll
+D:\work\skillbox\SkillBox\SkillBox.Infrastructure\obj\Debug\netcoreapp3.1\SkillBox.Infrastructure.pdb
