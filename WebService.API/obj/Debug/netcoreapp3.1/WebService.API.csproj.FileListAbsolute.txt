@@ -2,7 +2,6 @@ D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\appsettings.Dev
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\appsettings.json
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\3rdpartylicenses.txt
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\assets\scss\mixins.scss
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\common.546caa87ab2736c732c4.js
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\favicon.ico
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\index.html
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\polyfills.7a965888daba3fbc4385.js
@@ -66,10 +65,6 @@ D:\work\skillbox\SkillBox\WebService.API\obj\Debug\netcoreapp3.1\WebService.API.
 D:\work\skillbox\SkillBox\WebService.API\obj\Debug\netcoreapp3.1\WebService.API.xml
 D:\work\skillbox\SkillBox\WebService.API\obj\Debug\netcoreapp3.1\WebService.API.pdb
 D:\work\skillbox\SkillBox\WebService.API\obj\Debug\netcoreapp3.1\WebService.API.genruntimeconfig.cache
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\5.0224db98612c7ba6407b.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\6.e27635062aa2d2dedf46.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\main.e60616f97e9ad32e6583.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\runtime.4f7faa04b0647b1b472a.js
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\web.config
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -78,3 +73,8 @@ D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\Microsoft.Ident
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\5.b9e8352ce2f2a755c6fb.js
+D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\6.dcf692d1cc406125d89e.js
+D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\common.a32678dd809b75410570.js
+D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\main.bf0d09afd1b78cec9bba.js
+D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\runtime.448adc49ff84c24f5d45.js
