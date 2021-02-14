@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
-using WebService.Infrastructure.Token;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using WebService.Domain.ServicesContract;
 using WebService.Infrastructure.Context;
 using WebService.Infrastructure.Entity;
-using System.Threading;
+using WebService.Infrastructure.Token;
 
 namespace WebService.Infrastructure.Services
 {

@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -37,6 +39,7 @@ namespace WebService.API
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
+            services.AddScoped<IPostService, PostService>();
 
 
             #endregion
@@ -141,12 +144,25 @@ namespace WebService.API
 
             #endregion
 
+            #region use static files
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(
+                        Directory.GetCurrentDirectory(), @"wwwroot")),
+                RequestPath = new PathString("/wwwroot")
+            });
+
+            #endregion
+
             #region use swagger
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                // c.RoutePrefix = "swagger";
             });
 
             #endregion

@@ -1,9 +1,9 @@
-﻿using WebService.Domain.ServicesContract;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
-using WebService.Infrastructure.Context;
 using WebService.Domain.Dto.Auth;
+using WebService.Domain.ServicesContract;
+using WebService.Infrastructure.Context;
 using WebService.Infrastructure.Entity;
 
 namespace WebService.Infrastructure.Services

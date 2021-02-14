@@ -74,7 +74,7 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
       if (window.confirm('точно?')) {
         const param = new HttpParams()
           .append('id', this.editedPost.id.toString())
-        this.subsDel = this.apiService.post("post/remove-post", undefined, param)
+        this.subsDel = this.apiService.delete("post/remove-post", param)
           .subscribe(
             next => {
               this.postService.emiteUpdatePosts();
@@ -95,7 +95,7 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
         const param = new HttpParams()
           .append('id', this.editedPost.id.toString())
           .append('name', name)
-        this.subsDel = this.apiService.post("post/remove-file", undefined, param)
+        this.subsDel = this.apiService.delete("post/remove-file", param)
           .subscribe(
             next => {
               this.postService.emiteUpdatePosts();

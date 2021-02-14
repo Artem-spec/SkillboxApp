@@ -42,7 +42,7 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
 
   public openLoginDialog() {
     this.dialog.open(LoginDialogComponent, {
-      height: 'auto',
+      height: 'fit-content',
       width: 'auto'
     });
 

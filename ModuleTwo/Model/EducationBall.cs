@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ModuleTwo.Model
+﻿namespace ModuleTwo.Model
 {
     public class EducationBall
     {

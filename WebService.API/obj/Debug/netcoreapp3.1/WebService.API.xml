@@ -23,6 +23,90 @@
             <param name="query"></param>
             <returns></returns>
         </member>
+        <member name="T:WebService.API.Controllers.PostController">
+            <summary>
+            контроллер обработки постов
+            </summary>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.#ctor(WebService.Domain.ServicesContract.IPostService)">
+            <summary>
+            инициализация контроллера
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.GetListPost(System.Threading.CancellationToken)">
+            <summary>
+            получение всех постов
+            </summary>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.GetCountPost(System.Threading.CancellationToken)">
+            <summary>
+            получение количества постов
+            </summary>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.GetPost(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            получение поста по id
+            </summary>
+            <param name="id"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.AddPost(WebService.Domain.Dto.Post.PostDto,System.Threading.CancellationToken)">
+            <summary>
+            добавление описания посту
+            </summary>
+            <param name="post"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.UpdatePost(System.Int32,WebService.Domain.Dto.Post.PostDto,System.Threading.CancellationToken)">
+            <summary>
+            изменение поста
+            </summary>
+            <param name="id"></param>
+            <param name="post"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.UpdatePostFile(Microsoft.AspNetCore.Http.IFormCollection,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            добавление файлов посту
+            </summary>
+            <param name="files"></param>
+            <param name="id"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.RemovePost(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            удаление поста
+            </summary>
+            <param name="id"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.RemovePostFile(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            удаление файла поста
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebService.API.Controllers.PostController.DownloadFIle(WebService.Domain.Query.Post.LoadFileQuery,System.Threading.CancellationToken)">
+            <summary>
+            загрузка файла
+            </summary>
+            <param name="query"></param>
+            <param name="ct"></param>
+            <returns></returns>
+        </member>
         <member name="T:WebService.API.Controllers.TodoController">
             <summary>
             контроллер обрабатывающий запросы на получение информации по todo типу

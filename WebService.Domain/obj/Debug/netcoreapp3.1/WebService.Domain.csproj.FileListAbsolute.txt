@@ -1,7 +1,6 @@
 D:\work\skillbox\SkillBox\WebService.Domain\bin\Debug\netcoreapp3.1\WebService.Domain.deps.json
 D:\work\skillbox\SkillBox\WebService.Domain\bin\Debug\netcoreapp3.1\WebService.Domain.dll
 D:\work\skillbox\SkillBox\WebService.Domain\bin\Debug\netcoreapp3.1\WebService.Domain.pdb
-D:\work\skillbox\SkillBox\WebService.Domain\obj\Debug\netcoreapp3.1\WebService.Domain.csprojAssemblyReference.cache
 D:\work\skillbox\SkillBox\WebService.Domain\obj\Debug\netcoreapp3.1\WebService.Domain.AssemblyInfoInputs.cache
 D:\work\skillbox\SkillBox\WebService.Domain\obj\Debug\netcoreapp3.1\WebService.Domain.AssemblyInfo.cs
 D:\work\skillbox\SkillBox\WebService.Domain\obj\Debug\netcoreapp3.1\WebService.Domain.csproj.CoreCompileInputs.cache
