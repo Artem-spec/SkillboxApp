@@ -2,7 +2,7 @@
 
 .body {
     width: 90%;
-    height: 87%;
+    // height: 87%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -34,19 +34,24 @@
         z-index: 0;
         top: 0;
         transition: all 1s ease-in-out;
+        z-index: 1;
 
         .btn_open {
             z-index: 4;
             display: block;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             visibility: visible;
             @include basic_ico_btn;
+
+            box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 6px;
+            background-color: #fff;
         }
 
         .menu_block {
             z-index: 4;
-            margin-left: 5px;
+            margin-left: 10px;
             width: 330px;
         }
     }

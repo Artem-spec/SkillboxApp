@@ -9,6 +9,9 @@
     display: flex;
     flex-direction: column;
 
+    position: sticky;
+    top: 5px;
+
     .item {
         margin: 5px 0;
         font-size: 18px;
@@ -28,7 +31,6 @@
 
             svg {
                 cursor: pointer;
-              
 
                 &:hover {
                     fill: red;

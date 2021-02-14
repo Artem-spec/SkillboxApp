@@ -1,7 +1,7 @@
 @import "~src/styles.scss";
 
 .post_view_container {
-    height: 100%;
+    // height: 100%;
 
     .tool_container {
         box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -11,7 +11,14 @@
         position: relative;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 10px;
+
+        @media (min-width: 966px), (min-height: 800px) {
+            position: sticky;
+            top: 5px;
+            z-index: 1;
+        }
 
         @media (max-width: 965px) {
             justify-content: flex-start;
@@ -28,11 +35,11 @@
 
         .btn_tool {
             @include basic_ico_btn;
+            height: 40px;
+            width: 40px;
 
             svg {
                 cursor: pointer;
-                height: 35px;
-                width: 35px;
 
                 &:hover {
                     fill: red;
@@ -43,7 +50,12 @@
 
     .post_item_container {
         overflow: auto;
-        height: 90%;
+        // height: 90%;
+
+        @media (max-width: 965px) {
+            // height: auto;
+            // overflow: unset;
+        }
 
         .post_item {
             width: 97%;

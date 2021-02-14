@@ -16,8 +16,8 @@
 
         button {
             margin: 0 2px;
-            @include basic_btn(13px);
             padding: 2px;
+            @include basic_btn(13px);
         }
 
         .actice {

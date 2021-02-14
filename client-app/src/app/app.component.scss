@@ -1,8 +1,16 @@
 @import "~src/styles.scss";
 
-.header {
-    width: 100%;
-    position: sticky;
-    top: 0;
-    height: 12%;
+.scroll_container {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .header {
+        width: 100%;
+        // height: auto;
+
+        @media (max-height: 500px) {
+            // height: auto;
+        }
+    }
 }
