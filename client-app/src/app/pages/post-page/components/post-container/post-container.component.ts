@@ -68,6 +68,17 @@ export class PostContainerComponent implements OnInit, OnDestroy {
     } else {
       this.filtered();
     }
+
+    // временная сортировка TODO
+    this.listViewPost.sort((a, b) => {
+      if (a.date && b.date) {
+        if (a.date > b.date)
+          return -1
+        if (a.date < b.date)
+          return 1
+      }
+      return 0;
+    });
   }
 
   private filtered() {
