@@ -3,14 +3,33 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>6b60903c-616c-48bf-a789-ab52f87ea86d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
+    <PackageReference Include="Google.Apis.AnalyticsReporting.v4" Version="1.50.0.2197" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1-beta1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SkillBox.Infrastructure\SkillBox.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="rb-openapi-wso2-3363554821c5.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="rb-openapi-wso2-759cbdcf2741.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="rb-openapi-wso2-b6f74f5ff512.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="rb-openapi-wso2-ff69339b80da.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

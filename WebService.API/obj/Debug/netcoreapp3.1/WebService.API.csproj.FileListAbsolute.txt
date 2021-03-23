@@ -1,16 +1,5 @@
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\appsettings.json
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\3rdpartylicenses.txt
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\5.b9e8352ce2f2a755c6fb.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\6.dcf692d1cc406125d89e.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\assets\scss\mixins.scss
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\common.a32678dd809b75410570.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\favicon.ico
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\index.html
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\main.bf0d09afd1b78cec9bba.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\polyfills.7a965888daba3fbc4385.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\runtime.448adc49ff84c24f5d45.js
-D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\clientWebApp\styles.87c1217067ce4c22136f.css
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\WebService.API.exe
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\wwwroot\files\icon.png
 D:\work\skillbox\SkillBox\WebService.API\bin\Debug\netcoreapp3.1\wwwroot\files\tzAng.docx

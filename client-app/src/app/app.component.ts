@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bannerService.removeMessage();
     this.bannerService.addNewMessage({
       position: TypePositionMessage.TopRight,
       typeMessage: TypeMessage.Info,

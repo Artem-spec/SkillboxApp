@@ -6,6 +6,13 @@ WebService.API/bin/
 */bin/
 */node_modules/
 
+*/obj/
+
+# other project
+TestForGoogle/
+TestGoogleAPiKey/
+WebService.BenchTest/
+
 # compiled output
 /dist
 /tmp

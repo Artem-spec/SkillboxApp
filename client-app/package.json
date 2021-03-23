@@ -4,7 +4,7 @@
   "scripts": {
     "start": "ng serve",
     "build:dist": "ng build --prod",
-    "build:spa":"ng build --prod --output-path ../WebService.API/clientWebApp"
+    "build:spa": "ng build --prod --output-path ../WebService.API/clientWebApp"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +20,7 @@
     "@angular/router": "~11.0.6",
     "file-saver": "^2.0.5",
     "moment": "^2.29.1",
-    "ngx-compack": "1.0.1",
+    "ngx-compack": "^1.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
