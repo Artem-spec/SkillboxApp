@@ -218,7 +218,7 @@ namespace TelegramBote.Bots
         private static async Task SendInternetAttachment(
             string searchTerm, ITurnContext turnContext, CancellationToken cancellationToken)
         {
-            var subscriptionKey = "1d516d8adb0f483cb367e1cc87683a81";
+            var subscriptionKey = "***";
 
             var uriQuery = "https://api.bing.microsoft.com/v7.0/images/search" + "?q=" + Uri.EscapeDataString(searchTerm);
 
