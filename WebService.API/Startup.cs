@@ -8,8 +8,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NLog;
+using NLog.Extensions.Logging;
 using System;
 using System.IO;
 using System.Reflection;
@@ -26,7 +29,20 @@ namespace WebService.API
     /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// поставщик конфигурации
+        /// </summary>
         public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// провайдер для логирования команд ef core серез nlog
+        /// </summary>
+        public static readonly ILoggerFactory EfNlogFactory = LoggerFactory.Create(builder =>
+        {
+            builder
+              .AddNLog()
+              .SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+        });
 
         /// <summary>
         /// инициализация
@@ -51,7 +67,9 @@ namespace WebService.API
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
 
+            services.AddHttpClient();
 
             #endregion
 
@@ -89,7 +107,10 @@ namespace WebService.API
             #region add db context
 
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("ConnectDatabase"), new MySqlServerVersion(new Version(8, 0, 23))));
+                {
+                    options.UseMySql(Configuration.GetConnectionString("ConnectDatabase"), new MySqlServerVersion(new Version(8, 0, 23)));
+                    options.UseLoggerFactory(EfNlogFactory);
+                });
 
             #endregion
 
@@ -204,11 +225,11 @@ namespace WebService.API
             {
                 spa.Options.SourcePath = "../client-app";
 
-                if (env.EnvironmentName == "Development" &&
-                Environment.GetEnvironmentVariable("TYPE_WEB") == "FullApp")
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
+                //if (env.EnvironmentName == "Development" &&
+                //Environment.GetEnvironmentVariable("TYPE_WEB") == "FullApp")
+                //{
+                //    spa.UseAngularCliServer(npmScript: "start");
+                //}
 
             });
         }

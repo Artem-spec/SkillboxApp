@@ -31,6 +31,8 @@ export class TodoRecordService {
     private cts: CompackToastService,
     private apiService: ApiService) {
     moment.locale('ru');
+    if (this.authService.checkLogIn())
+      this.getToDoRecords(TypeViewPeriodRecord.Today, [])
   }
 
   ngOnDestroy() {
@@ -39,7 +41,8 @@ export class TodoRecordService {
   }
 
   public emiteLoadRecords(typeViewPeriodRecord: TypeViewPeriodRecord, dates: string[]) {
-    this.getToDoRecords(typeViewPeriodRecord, dates)
+    if (this.authService.checkLogIn())
+      this.getToDoRecords(typeViewPeriodRecord, dates)
   }
 
   public emiteCancelAddPosts() {
@@ -98,7 +101,7 @@ export class TodoRecordService {
           this.getToDoRecords(this.typeView, this.dates);
         },
         error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Изменение заметки', message: 'Произошла ошибка при получении списка постов' }))
+          { type: TypeToast.Error, title: 'Изменение заметки', message: 'Произошла ошибка при получении списка заметок' }))
   }
 
   public addNewRecord(record: TodoRecordInfo) {
@@ -112,7 +115,7 @@ export class TodoRecordService {
           this.getToDoRecords(this.typeView, this.dates);
         },
         error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Добавление заметки', message: 'Произошла ошибка при получении списка постов' }))
+          { type: TypeToast.Error, title: 'Добавление заметки', message: 'Произошла ошибка при получении списка заметок' }))
   }
 
   public removeRecord(idRecord: number) {
@@ -127,7 +130,7 @@ export class TodoRecordService {
           this.getToDoRecords(this.typeView, this.dates);
         },
         error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Удаление заметки', message: 'Произошла ошибка при получении списка постов' }))
+          { type: TypeToast.Error, title: 'Удаление заметки', message: 'Произошла ошибка при получении списка заметок' }))
   }
 
   public getRecordsSubs(): Observable<TodoRecordInfo[]> {
@@ -160,7 +163,7 @@ export class TodoRecordService {
         }
       },
         error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Список заметок', message: 'Произошла ошибка при получении списка постов' }))
+          { type: TypeToast.Error, title: 'Список заметок', message: 'Произошла ошибка при получении списка заметок' }))
   }
 
 }

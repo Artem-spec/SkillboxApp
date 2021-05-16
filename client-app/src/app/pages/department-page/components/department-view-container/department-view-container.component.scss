@@ -1,0 +1,51 @@
+@import "~src/styles.scss";
+
+.container_department {
+    width: 100%;
+    height: auto;
+
+    .container_department_title {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    hr {
+        width: 100%;
+        background-color: #000;
+        color: #000;
+    }
+
+    .container_add {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .btn_tool {
+            padding: 6px;
+            @include basic_ico_btn();
+
+            &:hover {
+                fill: red;
+            }
+
+            &:disabled {
+                opacity: 0.7;
+            }
+
+            svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+        .radio_group {
+            display: flex;
+            flex-direction: row;
+            margin: 5px 0;
+
+            .radio_btn {
+                margin: 0 2px;
+            }
+        }
+    }
+}

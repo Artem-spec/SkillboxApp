@@ -1,32 +1,83 @@
 @import "~src/styles.scss";
 
-p {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 20px;
-}
+.dilog_container {
+  position: relative;
 
-hr {
-  background-color: #e61739;
-}
+  .close_btn {
+    cursor: pointer;
+    position: absolute;
+    font-size: 22px;
+    line-height: 0.9;
+    top: -20px;
+    right: -20px;
 
-.dialog {
-  .content {
+    border-radius: 50%;
+
+    padding: 4px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+
+    transition: all 0.5s ease-out;
+
+    z-index: 1;
+    overflow: hidden;
+    background-color: #fff;
+
+    &::before {
+      transition: all 0.5s ease-out;
+      content: "";
+      width: 0;
+      height: 100%;
+      background-color: #eee;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    &:hover {
+      font-weight: 700;
+      border-color: #e61739;
+      color: #000;
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  hr {
+    background-color: #e61739;
+  }
+
+  .dialog {
+    .content {
+      padding: 11px 0;
+      display: flex;
+      flex-direction: column;
+      min-width: 14vw;
+
+      mat-form-field {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .footer {
     display: flex;
-    flex-direction: column;
-    min-width: 14vw;
+    justify-content: space-between;
 
-    mat-form-field {
-      font-size: 18px;
+    .btn {
+      @include basic_btn(15px);
     }
   }
 }
 
-.footer {
-  display: flex;
-  justify-content: space-between;
 
-  .btn {
-    @include basic_btn(15px);
-  }
-}

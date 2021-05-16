@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddBarServiceService } from 'src/app/services/addBarService.service';
 
 @Component({
   selector: 'app-not-found-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotFoundPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private abs: AddBarServiceService
+  ) { }
 
   ngOnInit() {
+    this.abs.changeBar(null);
   }
 
 }

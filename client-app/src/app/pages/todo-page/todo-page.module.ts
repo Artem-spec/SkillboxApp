@@ -12,7 +12,7 @@ import { TodoRecordInfoPanelComponent } from './components/todo-record-info-pane
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+
 // compack
 import { CompackDatepickerModule } from 'ngx-compack';
 // service
@@ -26,7 +26,6 @@ import { TodoRecordService } from './services/todo-record.service';
     TodoPageComponent
   ],
   imports: [
-    DragDropModule,
     CompackDatepickerModule,
     FormsModule,
     MatTooltipModule,

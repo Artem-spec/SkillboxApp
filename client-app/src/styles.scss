@@ -17,6 +17,11 @@ html {
     overflow: hidden !important;
 }
 
+.tooltip {
+    font-size: 18px !important;
+    white-space: pre-line;
+}
+
 .my-mat-field {
     .mat-form-field-wrapper { 
         padding: 0;
@@ -37,3 +42,4 @@ html {
         padding: 0 !important;
     }
 }
+

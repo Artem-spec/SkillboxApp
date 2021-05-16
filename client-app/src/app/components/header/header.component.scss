@@ -8,20 +8,4 @@
     align-items: flex-end;
     justify-content: flex-start;
     position: relative;
-
-    .nav_tool {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-
-        button {
-            margin: 0 2px;
-            padding: 2px;
-            @include basic_btn(13px);
-        }
-
-        .actice {
-            color: red;
-        }
-    }
 }

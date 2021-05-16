@@ -24,6 +24,10 @@ export class HeaderComponent implements OnInit {
             this.title = 'ToDo Client App';
             break;
           }
+          case '/department': {
+            this.title = 'Department Client App';
+            break;
+          }
           default: {
             this.title = 'Client App';
             break;

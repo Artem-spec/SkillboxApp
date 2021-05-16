@@ -1,6 +1,69 @@
 <div class="scroll_container">
+
     <header class="header">
         <app-header></app-header>
     </header>
-    <router-outlet></router-outlet>
+
+    <div class="view_container">
+
+        <div class="body_container" [ngClass]="{'full':isResizeBarBlock}">
+            <router-outlet></router-outlet>
+        </div>
+
+        <div class="bar_container"
+            [ngClass]="{'shell':isResizeBarBlock, 'open': barBlockIsVisible,'closed':!barBlockIsVisible}">
+
+            <div class="btn_tool_bar">
+
+                <button class="btn_tool" matTooltip="меню" matTooltipClass="tooltip" *ngIf="isResizeBarBlock"
+                    (click)="barBlockIsVisible =!barBlockIsVisible">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 384.97 384.97"
+                        style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
+                        <g id="Grid">
+                            <path d="M144.364,0H24.061C10.767,0,0,10.767,0,24.061v120.303c0,13.281,10.767,24.061,24.061,24.061h120.303
+                        c13.293,0,24.061-10.779,24.061-24.061V24.061C168.424,10.767,157.657,0,144.364,0z M144.364,144.364H24.061V24.061h120.303
+                        V144.364z" />
+                            <path d="M360.909,0H240.606c-13.293,0-24.061,10.767-24.061,24.061v120.303c0,13.281,10.767,24.061,24.061,24.061h120.303
+                      c13.281,0,24.061-10.779,24.061-24.061V24.061C384.97,10.767,374.191,0,360.909,0z M360.909,144.364H240.606V24.061h120.303
+                      V144.364z" />
+                            <path d="M360.909,216.545H240.606c-13.293,0-24.061,10.779-24.061,24.061v120.303c0,13.293,10.767,24.061,24.061,24.061h120.303
+                      c13.281,0,24.061-10.767,24.061-24.061V240.606C384.97,227.313,374.191,216.545,360.909,216.545z M360.909,360.909H240.606
+                      V240.606h120.303V360.909z" />
+                            <path d="M144.364,216.545H24.061C10.767,216.545,0,227.325,0,240.606v120.303c0,13.293,10.767,24.061,24.061,24.061h120.303
+                      c13.293,0,24.061-10.767,24.061-24.061V240.606C168.424,227.313,157.657,216.545,144.364,216.545z M144.364,360.909H24.061
+                      V240.606h120.303V360.909z" />
+                        </g>
+                    </svg>
+                </button>
+
+                <button class="btn_tool" matTooltip="авторизация" matTooltipClass="tooltip"
+                    *ngIf="!authService.checkLogIn()" (click)="openLoginDialog()">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 499.1 499.1"
+                        style="enable-background:new 0 0 499.1 499.1;" xml:space="preserve">
+                        <g>
+                            <path d="M0,249.6c0,9.5,7.7,17.2,17.2,17.2h327.6l-63.9,63.8c-6.7,6.7-6.7,17.6,0,24.3c3.3,3.3,7.7,5,12.1,5s8.8-1.7,12.1-5
+                         l93.1-93.1c6.7-6.7,6.7-17.6,0-24.3l-93.1-93.1c-6.7-6.7-17.6-6.7-24.3,0c-6.7,6.7-6.7,17.6,0,24.3l63.8,63.8H17.2
+                         C7.7,232.5,0,240.1,0,249.6z" />
+                            <path d="M396.4,494.2c56.7,0,102.7-46.1,102.7-102.8V107.7C499.1,51,453,4.9,396.4,4.9H112.7C56,4.9,10,51,10,107.7V166
+                         c0,9.5,7.7,17.1,17.1,17.1c9.5,0,17.2-7.7,17.2-17.1v-58.3c0-37.7,30.7-68.5,68.4-68.5h283.7c37.7,0,68.4,30.7,68.4,68.5v283.7
+                         c0,37.7-30.7,68.5-68.4,68.5H112.7c-37.7,0-68.4-30.7-68.4-68.5v-57.6c0-9.5-7.7-17.2-17.2-17.2S10,324.3,10,333.8v57.6
+                         c0,56.7,46.1,102.8,102.7,102.8H396.4L396.4,494.2z" />
+                        </g>
+                    </svg>
+                </button>
+
+            </div>
+
+            <div class="basic_bar">
+                <app-main-tool-bar></app-main-tool-bar>
+            </div>
+
+            <div class="basic_bar" *ngComponentOutlet="dynamicBar"></div>
+
+
+
+        </div>
+
+    </div>
+
 </div>

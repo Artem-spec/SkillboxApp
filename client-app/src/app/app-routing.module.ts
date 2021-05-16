@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/todo-page/todo-page.module').then(m => m.TodoPageModule)
   },
   {
+    path: 'department',
+    loadChildren: () => import('./pages/department-page/department-page.module').then(m => m.DepartmentPageModule)
+  },
+  {
     path: '**',
     component: NotFoundPageComponent
   }

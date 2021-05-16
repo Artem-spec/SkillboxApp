@@ -1,10 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { CompackToastService, TypeToast } from 'ngx-compack';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { LoginDialogComponent } from 'src/app/components/login-dialog/login-dialog.component';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -22,29 +20,20 @@ export class TodoRecordInfoPanelComponent implements OnInit {
   public apiUsrl = environment.openApiUrl;
 
   constructor(
-    private recordService: TodoRecordService,
     public authService: AuthService,
     private apiService: ApiService,
     private cts: CompackToastService,
-    public dialog: MatDialog,
+    private todoServise: TodoRecordService
   ) { }
 
   ngOnInit() {
-    this.recordService.getRecordsSubs()
-      .subscribe(
-        () => this.getCountPost()
-      )
+      this.todoServise.getRecordsSubs()
+        .subscribe(
+          () => this.getCountRecords()
+        );
   }
 
-  public openLoginDialog() {
-    this.dialog.open(LoginDialogComponent, {
-      height: 'auto',
-      width: 'auto'
-    });
-
-  }
-
-  private getCountPost() {
+  private getCountRecords() {    
     const httpParams = new HttpParams()
       .append('IdUser', this.authService.getUserId().toString())
     this.countPost$ = this.apiService.get<number>("todo/count", httpParams)

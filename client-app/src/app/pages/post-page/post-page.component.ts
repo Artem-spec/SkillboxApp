@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { CompackBannerService, TypeMessage, TypePositionMessage } from 'ngx-compack';
-import { ResizeService } from 'src/app/services/resize.service';
+import { AddBarServiceService } from 'src/app/services/addBarService.service';
+import { InfoPanelComponent } from './components/info-panel/info-panel.component';
 
 @Component({
   selector: 'app-post-page',
@@ -10,32 +10,15 @@ import { ResizeService } from 'src/app/services/resize.service';
 })
 export class PostPageComponent implements OnInit {
 
-  // view
-  public isHidden = true;
-  public viewWidth = window.innerWidth;
-
   constructor(
-    private titleService: Title,
-    private bannerService: CompackBannerService,
-    rs: ResizeService
-  ) {
-    rs.getResizeEvent().subscribe((value: number) => {
-      this.viewWidth = value;
-      if (value < 965)
-        this.isHidden = true;
-    });
-  }
+    private abs: AddBarServiceService,
+    private titleService: Title
+  ) { }
 
   ngOnInit() {
     this.titleService.setTitle('post client app');
 
-    // this.bannerService.removeMessage();
-    // this.bannerService.addNewMessage({
-    //   position: TypePositionMessage.TopRight,
-    //   typeMessage: TypeMessage.Info,
-    //   intervalView: 15,
-    //   message: 'Пример фронта под тз. \n Для авторизации: \n логин: admin \n пароль: complex'
-    // });
+    this.abs.changeBar(InfoPanelComponent);
   }
 
 }

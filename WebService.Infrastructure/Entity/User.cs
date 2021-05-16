@@ -17,6 +17,12 @@ namespace WebService.Infrastructure.Entity
         [Column("password")]
         public string Password { get; set; }
 
+        [Column("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [Column("phone_code")]
+        public string PhoneCode { get; set; }
+
         public List<TodoRecord> TodoRecords { get; set; }
     }
 }

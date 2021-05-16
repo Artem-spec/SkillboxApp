@@ -50,22 +50,22 @@ export class ApiService {
     return this.httpClient.request(request);
   }
 
-  public delete(path: string, params?: HttpParams) {
+  public delete<T>(path: string, params?: HttpParams) {
     if (params)
       httpOptions.params = params;
     else
       httpOptions.params = new HttpParams();
 
-    return this.httpClient.delete(this.url + path, httpOptions);
+    return this.httpClient.delete<T>(this.url + path, httpOptions);
   }
 
-  public put(path: string, body: object, params?: HttpParams) {
+  public put<T>(path: string, body: object, params?: HttpParams) {
     if (params)
       httpOptions.params = params;
     else
       httpOptions.params = new HttpParams();
 
-    return this.httpClient.put(this.url + path, body, httpOptions);
+    return this.httpClient.put<T>(this.url + path, body, httpOptions);
   }
 
 }

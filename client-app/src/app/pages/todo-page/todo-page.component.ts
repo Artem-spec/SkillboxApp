@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { CompackBannerService, TypeMessage, TypePositionMessage } from 'ngx-compack';
-import { AuthService } from 'src/app/services/auth.service';
-import { ResizeService } from 'src/app/services/resize.service';
+import { AddBarServiceService } from 'src/app/services/addBarService.service';
+import { TodoRecordInfoPanelComponent } from './components/todo-record-info-panel/todo-record-info-panel.component';
 
 @Component({
   selector: 'app-todo-page',
@@ -11,33 +10,14 @@ import { ResizeService } from 'src/app/services/resize.service';
 })
 export class TodoPageComponent implements OnInit {
 
-  // view
-  public isHidden = true;
-  public viewWidth = window.innerWidth;
-
   constructor(
-    // private bannerService: CompackBannerService,
-    public authService: AuthService,
-    private titleService: Title,
-    rs: ResizeService
-  ) {
-    rs.getResizeEvent().subscribe((value: number) => {
-      this.viewWidth = value;
-      if (value < 991)
-        this.isHidden = true;
-    });
-  }
+    private abs: AddBarServiceService,
+    private titleService: Title) { }
 
   ngOnInit() {
     this.titleService.setTitle('todo client app');
 
-    // this.bannerService.removeMessage();
-    // this.bannerService.addNewMessage({
-    //   position: TypePositionMessage.TopRight,
-    //   typeMessage: TypeMessage.Info,
-    //   intervalView: 15,
-    //   message: 'Пример фронта под задание. \n Для авторизации: \n логин: admin \n пароль: complex'
-    // });
+    this.abs.changeBar(TodoRecordInfoPanelComponent);
   }
 
 }

@@ -1,30 +1,84 @@
-<p>Авторизация</p>
+<div class="dilog_container">
 
-<hr>
+  <p>Авторизация</p>
 
-<form (ngSubmit)="logIn()" #form="ngForm">
+  <span class="close_btn" (click)="cLoseDialog()">x</span>
 
-  <div mat-dialog-content class="dialog">
+  <hr>
+
+  <div class="dialog">
+
+
+    <mat-tab-group mat-align-tabs="center" [color]="'accent'">
+
+      <mat-tab label="Логин">
+
+        <ng-template [ngTemplateOutlet]="loginPassTemplate"></ng-template>
+
+      </mat-tab>
+      <mat-tab label="Телефон">
+
+        <ng-template [ngTemplateOutlet]="PhoneTemplate"></ng-template>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </div>
+
+</div>
+
+<ng-template #loginPassTemplate>
+
+  <form (ngSubmit)="logIn()" #form="ngForm">
+
 
     <div class="content">
 
-      <mat-form-field [color]="'warn'">
+      <mat-form-field class="my-mat-field" [color]="'warn'" [appearance]="'outline'">
         <mat-label>Логин</mat-label>
         <input autocomplete="off" name="login" #login="ngModel" required matInput [(ngModel)]="userName">
       </mat-form-field>
 
-      <mat-form-field [color]="'warn'">
+      <mat-form-field class="my-mat-field" [color]="'warn'" [appearance]="'outline'">
         <mat-label>Пароль</mat-label>
         <input type="password" autocomplete="off" name="pass" #pass="ngModel" required matInput [(ngModel)]="password">
       </mat-form-field>
 
     </div>
 
+    <div class="footer">
+      <button class="btn" [disabled]="!form.form.valid" type="submit">Войти</button>
+    </div>
+
+  </form>
+
+</ng-template>
+
+
+
+<ng-template #PhoneTemplate>
+
+  <div class="content">
+
+    <mat-form-field class="my-mat-field" [color]="'warn'" [appearance]="'outline'">
+      <mat-label>Телефон</mat-label>
+      <input type="phone" autocomplete="off" name="phone" #phone="ngModel" required matInput [(ngModel)]="phoneNumber"
+        placeholder="8(xxx)xxx-xx-xx" mask="0(000)000-00-00">
+    </mat-form-field>
+
+    <mat-form-field class="my-mat-field" [color]="'warn'" [appearance]="'outline'" *ngIf="isPhoneCorrect">
+      <mat-label>Код</mat-label>
+      <input type="password" autocomplete="off" name="code" #code="ngModel" required matInput [(ngModel)]="phoneCode">
+    </mat-form-field>
+
   </div>
 
-  <div mat-dialog-actions class="footer">
-    <button class="btn" (click)="cLoseDialog()" type="button" cdkFocusInitial>Отмена</button>
-    <button class="btn" [disabled]="!form.form.valid" type="submit">Войти</button>
+  <div class="footer">
+    <button class="btn" *ngIf="!isPhoneCorrect" [disabled]="phone.invalid" (click)="SendCodeToPhone()">Получить
+      код</button>
+    <button class="btn" *ngIf="isPhoneCorrect" [disabled]="!phoneCode || phone.invalid"
+      (click)="CheckCode()">Подтвердить</button>
   </div>
 
-</form>
+</ng-template>
