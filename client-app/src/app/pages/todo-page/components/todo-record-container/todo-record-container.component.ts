@@ -23,8 +23,7 @@ export class TodoRecordContainerComponent implements OnInit {
   public formatOutPut = 'YYYY-MM-DD HH:mm:ss';
 
   constructor(
-    private recordService: TodoRecordService
-  ) { }
+    private recordService: TodoRecordService) { }
 
   ngOnInit() {
 

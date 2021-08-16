@@ -99,10 +99,10 @@ export class WorkerViewComponent implements OnInit {
         .subscribe(
           next => {
             if (next) {
-              this.cts.emitNewNotif({ type: TypeToast.Success, title: 'успешно удалён' });
+              this.cts.emitNotife(TypeToast.Success, 'успешно удалён');
               if (next)
                 this.workerService.ReloadWorkers();
-              else this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка' });
+              else this.cts.emitNotife(TypeToast.Error, 'Ошибка');
             }
           }
         );
@@ -169,7 +169,7 @@ export class WorkerViewComponent implements OnInit {
         next =>
           saveAs(next, 'exports'),
         error =>
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Экспорт данных', message: 'Произошла ошибка' }),
+          this.cts.emitNotife(TypeToast.Error, 'Экспорт данных', 'Произошла ошибка'),
         () => this.fileIsPending = false
       );
   }

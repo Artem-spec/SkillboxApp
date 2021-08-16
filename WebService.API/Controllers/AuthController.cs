@@ -12,7 +12,7 @@ namespace WebService.API.Controllers
     /// контроллер авторизации пользователей
     /// </summary>
     [ApiController]
-    [Route("auth")]
+    [Route("api/auth")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _service;

@@ -17,27 +17,26 @@ export class WorkerModalEditorComponent implements OnInit {
     public dialogRef: MatDialogRef<WorkerModalEditorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { worker: WorkerDep, idDep: number }) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public update() {
     if (this.data.idDep) {
       this.workerService.AddWorker(this.data.idDep, this.data.worker)
         .subscribe(next => {
           if (next) {
-            this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Успешно добавлено' });
+            this.cts.emitNotife(TypeToast.Success, 'Успешно добавлено');
             this.dialogRef.close(true);
           }
-          else this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка' });
+          else this.cts.emitNotife(TypeToast.Error, 'Ошибка');
         });
     } else {
       this.workerService.UpdateWorker(this.data.worker)
         .subscribe(next => {
           if (next) {
-            this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Успешно обновлено' });
+            this.cts.emitNotife(TypeToast.Success, 'Успешно обновлено');
             this.dialogRef.close(true);
           }
-          else this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка' });
+          else this.cts.emitNotife(TypeToast.Error, 'Ошибка');
         });
     }
   }

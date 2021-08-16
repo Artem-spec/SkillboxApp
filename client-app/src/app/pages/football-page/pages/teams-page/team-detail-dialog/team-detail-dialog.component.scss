@@ -1,0 +1,32 @@
+@import "~src/assets/scss/mixins.scss";
+
+p {
+  margin: 5px 0;
+}
+.title {
+  font-size: 18px;
+}
+
+.sub_title {
+  font-size: 14px;
+}
+
+.dialog {
+  .content {
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        list-style-type: none;
+        margin: 8px 0;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.footer {
+  .btn {
+    @include basic_btn(14px);
+  }
+}

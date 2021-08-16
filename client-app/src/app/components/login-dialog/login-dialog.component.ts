@@ -1,10 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CompackToastService, TypeToast } from 'ngx-compack';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-dialog',
@@ -23,11 +22,9 @@ export class LoginDialogComponent implements OnInit {
   private sub: Subscription | null | undefined;
 
   constructor(
-    private httpCLient: HttpClient,
     private cts: CompackToastService,
     private authService: AuthService,
-    public dialogRef: MatDialogRef<LoginDialogComponent>) {
-  }
+    public dialogRef: MatDialogRef<LoginDialogComponent>) { }
 
   ngOnInit() {
   }
@@ -45,15 +42,14 @@ export class LoginDialogComponent implements OnInit {
         .subscribe(
           (data) => {
             if (data) {
-              this.cts.emitNewNotif({ title: 'Авторизация', message: 'Успешно', type: TypeToast.Success });
+              this.cts.emitNotife(TypeToast.Success, 'Авторизация', 'Успешно');
               this.dialogRef.close(true);
             }
             else
-              this.cts.emitNewNotif({ title: 'Авторизация', message: 'Неерный log/pass', type: TypeToast.Error });
+              this.cts.emitNotife(TypeToast.Error, 'Авторизация', 'Неерный log/pass');
           },
           error => {
-            this.cts.emitNewNotif({ title: error.error?.message ?? 'ошибка', type: TypeToast.Error });
-            // this.cts.emitNewNotif({ title: 'Авторизация', message: 'Ошибка соединения', type: TypeToast.Error })
+            this.cts.emitNotife(TypeToast.Error, error.error?.message ?? 'ошибка');
           }
         );
   }
@@ -70,7 +66,7 @@ export class LoginDialogComponent implements OnInit {
             this.isPhoneCorrect = true;
           },
           (error: HttpErrorResponse) => {
-            this.cts.emitNewNotif({ title: error.error?.message ?? 'ошибка', type: TypeToast.Error });
+            this.cts.emitNotife(TypeToast.Error, error.error?.message ?? 'ошибка');
             this.isPhoneCorrect = false;
           }
         );
@@ -82,14 +78,14 @@ export class LoginDialogComponent implements OnInit {
         .subscribe(
           (data) => {
             if (data) {
-              this.cts.emitNewNotif({ title: 'Авторизация', message: 'Успешно', type: TypeToast.Success });
+              this.cts.emitNotife(TypeToast.Success, 'Авторизация', 'Успешно');
               this.dialogRef.close(true);
             }
             else
-              this.cts.emitNewNotif({ title: 'Авторизация', message: 'Неверный код', type: TypeToast.Error });
+              this.cts.emitNotife(TypeToast.Error, 'Авторизация', 'Неверный код');
           },
           error =>
-            this.cts.emitNewNotif({ title: 'Авторизация', message: 'Ошибка соединения', type: TypeToast.Error })
+            this.cts.emitNotife(TypeToast.Error, 'Авторизация', 'Ошибка соединения')
         );
   }
 

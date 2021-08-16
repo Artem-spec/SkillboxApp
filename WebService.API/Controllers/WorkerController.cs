@@ -14,7 +14,7 @@ namespace WebService.API.Controllers
     /// <summary>
     /// обработки запросов получение информации по сотрудникам
     /// </summary>
-    [Route("worker")]
+    [Route("api/worker")]
     [ApiController]
     public class WorkerController : ControllerBase
     {

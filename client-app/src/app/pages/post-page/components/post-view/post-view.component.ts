@@ -1,15 +1,13 @@
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CompackToastService, TypeToast } from 'ngx-compack';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment';
 import { saveAs } from 'file-saver';
 import { Post } from '../../model/post';
 import { SelectedFiles } from '../../model/selected-files';
 import { LoadFileQuery } from '../../model/load-file-query';
 import { PostService } from '../../services/post.service';
-
 
 @Component({
   selector: 'app-post-view',
@@ -38,11 +36,10 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
     private cts: CompackToastService,
     private apiService: ApiService,
     private cdr: ChangeDetectorRef,
-    public authService: AuthService
-  ) { }
+    public authService: AuthService,
+    @Inject('BASE_APP_URL') public urlApi: string) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngAfterViewInit() {
     this.loadTemplate();
@@ -78,11 +75,11 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
           .subscribe(
             next => {
               this.postService.emiteUpdatePosts();
-              this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Удаление поста', message: 'Успешно' });
+              this.cts.emitNotife(TypeToast.Success, 'Удаление поста', 'Успешно');
             },
             error => {
               this.acceptError();
-              this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Удаление поста', message: 'Произошла ошибка' });
+              this.cts.emitNotife(TypeToast.Error, 'Удаление поста', 'Произошла ошибка');
             }
           );
       }
@@ -99,11 +96,11 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
           .subscribe(
             next => {
               this.postService.emiteUpdatePosts();
-              this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Удаление файла', message: 'Успешно' });
+              this.cts.emitNotife(TypeToast.Success, 'Удаление файла', 'Успешно');
             },
             error => {
               this.acceptError();
-              this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Удаление файла', message: 'Произошла ошибка' });
+              this.cts.emitNotife(TypeToast.Error, 'Удаление файла', 'Произошла ошибка');
             }
           );
       }
@@ -140,11 +137,11 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
                 }, 1500
               );
             }
-            this.cts.emitNewNotif({ type: TypeToast.Success, title: action + ' поста', message: 'Успешно' });
+            this.cts.emitNotife(TypeToast.Success, action + ' поста', 'Успешно');
           },
           error => {
             this.acceptError();
-            this.cts.emitNewNotif({ type: TypeToast.Error, title: action + ' поста', message: 'Произошла ошибка' });
+            this.cts.emitNotife(TypeToast.Error, action + ' поста', 'Произошла ошибка');
           }
         );
     }
@@ -167,10 +164,8 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
               name: file.name,
               size: file.size
             });
-          } else {
-            this.cts.emitNewNotif({ type: TypeToast.Info, title: 'Выбор файлов', message: 'Дубликат файла' });
-          }
-
+          } else
+            this.cts.emitNotife(TypeToast.Info, 'Выбор файлов', 'Дубликат файла');
         }
       }
     }
@@ -186,7 +181,7 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
           formData.append('files', this.selectedFiles[i].file, this.selectedFiles[i].name);
       }
 
-      const req = new HttpRequest('POST', environment.urlApi + url, formData, {
+      const req = new HttpRequest('POST', this.urlApi + url, formData, {
         reportProgress: true,
         params: new HttpParams()
           .append('id', id.toString())
@@ -196,10 +191,10 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
         .subscribe(next => { },
           error => {
             this.acceptError();
-            this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Изменение файлов поста', message: 'Успешно' });
+            this.cts.emitNotife(TypeToast.Error, 'Изменение файлов поста', 'Успешно');
           },
           () => {
-            this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Изменение файлов поста', message: 'Успешно' });
+            this.cts.emitNotife(TypeToast.Success, 'Изменение файлов поста', 'Успешно');
             this.postService.emiteUpdatePosts();
           });
     }
@@ -211,7 +206,7 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
     if (window.confirm('скачать?')) {
       if (this.postData) {
         const httpBody = new LoadFileQuery(name, this.postData.id);
-        this.subsFile = this.http.post(environment.urlApi + "post/file", httpBody, {
+        this.subsFile = this.http.post(this.urlApi + "post/file", httpBody, {
           reportProgress: true,
           responseType: 'blob'
         }).subscribe(
@@ -219,7 +214,7 @@ export class PostViewComponent implements OnInit, AfterViewInit, OnDestroy {
             saveAs(next, name);
           }, error => {
             this.acceptError();
-            this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Загрузка файла', message: 'Произошла ошибка' });
+            this.cts.emitNotife(TypeToast.Error, 'Загрузка файла', 'Произошла ошибка');
           }
         )
       }

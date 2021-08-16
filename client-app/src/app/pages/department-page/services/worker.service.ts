@@ -1,10 +1,9 @@
 import { HttpParams, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { CompackToastService, TypeToast } from 'ngx-compack';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
-import { environment } from 'src/environments/environment';
 import { TypeWorkerFile } from '../model/dto/type-worker-file';
 import { WorkerDto } from '../model/dto/worker-dto';
 import { WorkerDep } from '../model/entity/worker';
@@ -20,7 +19,8 @@ export class WorkerService {
   constructor(
     private eventService: DepartmentEventService,
     private cts: CompackToastService,
-    private apiService: ApiService) { }
+    private apiService: ApiService,
+    @Inject('BASE_APP_URL') public urlApi: string) { }
 
   public getWorkersDataSubs() {
     return this.workers$;
@@ -32,7 +32,7 @@ export class WorkerService {
       .append('workerId', workerId.toString());
     return this.apiService.delete<boolean>(url, param)
       .pipe(catchError((err) => {
-        this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка при добавлении' })
+        this.cts.emitNotife(TypeToast.Error, 'Ошибка при добавлении');
         throw err;
       }));
   }
@@ -41,7 +41,7 @@ export class WorkerService {
     const url = 'worker';
     return this.apiService.put<boolean>(url, worker)
       .pipe(catchError((err) => {
-        this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка при добавлении' })
+        this.cts.emitNotife(TypeToast.Error, 'Ошибка при добавлении');
         throw err;
       }));
   }
@@ -52,7 +52,7 @@ export class WorkerService {
       .append('departmentId', departmentId.toString());
     return this.apiService.post<boolean>(url, worker, param)
       .pipe(catchError((err) => {
-        this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка при добавлении' })
+        this.cts.emitNotife(TypeToast.Error, 'Ошибка при добавлении');
         throw err;
       }));
   }
@@ -72,7 +72,7 @@ export class WorkerService {
           this.workers$.next(next);
         },
         error => {
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'ошибка при загрузки сотрудников' })
+          this.cts.emitNotife(TypeToast.Error, 'ошибка при загрузки сотрудников');
         })
   }
 
@@ -81,7 +81,7 @@ export class WorkerService {
       const formData = new FormData();
       formData.append('file', file, file.name);
 
-      const req = new HttpRequest('POST', environment.urlApi + 'worker/import-file', formData, {
+      const req = new HttpRequest('POST', this.urlApi + 'worker/import-file', formData, {
         reportProgress: true,
         params: new HttpParams()
           .append('departmentId', this.viewDepId.toString())
@@ -91,10 +91,10 @@ export class WorkerService {
       this.apiService.doRequest(req)
         .subscribe(next => { },
           error => {
-            this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Импорт записей', message: 'Произошла ошибка' });
+            this.cts.emitNotife(TypeToast.Error, 'Импорт записей', 'Произошла ошибка');
           },
           () => {
-            this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Импорт записей', message: 'Успешно' });
+            this.cts.emitNotife(TypeToast.Success, 'Импорт записей', 'Успешно');
             this.ReloadWorkers();
           });
     }

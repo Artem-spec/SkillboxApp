@@ -108,7 +108,8 @@ namespace WebService.API
 
             services.AddDbContext<ApplicationContext>(options =>
                 {
-                    options.UseMySql(Configuration.GetConnectionString("ConnectDatabase"), new MySqlServerVersion(new Version(8, 0, 23)));
+                    options.UseMySql(Configuration.GetConnectionString("ConnectDatabase"),
+                        new MySqlServerVersion(new Version(8, 0, 23)));
                     options.UseLoggerFactory(EfNlogFactory);
                 });
 

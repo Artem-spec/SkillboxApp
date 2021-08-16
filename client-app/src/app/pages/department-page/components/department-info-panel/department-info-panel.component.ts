@@ -46,10 +46,7 @@ export class DepartmentInfoPanelComponent implements OnInit, OnDestroy {
             this.countWorkers = next.countWorkers;
           }
         },
-        error => {
-          this.cts.emitNewNotif(
-            { type: TypeToast.Error, title: 'информация по департаментам'});
-        });
+        error => this.cts.emitNotife(TypeToast.Error, 'информация по департаментам'));
   }
 
 }

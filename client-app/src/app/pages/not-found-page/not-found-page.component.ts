@@ -9,8 +9,7 @@ import { AddBarServiceService } from 'src/app/services/addBarService.service';
 export class NotFoundPageComponent implements OnInit {
 
   constructor(
-    private abs: AddBarServiceService
-  ) { }
+    private abs: AddBarServiceService) { }
 
   ngOnInit() {
     this.abs.changeBar(null);

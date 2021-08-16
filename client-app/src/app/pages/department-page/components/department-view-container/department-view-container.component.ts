@@ -90,7 +90,7 @@ export class DepartmentViewContainerComponent implements OnInit, OnDestroy {
         next =>
           saveAs(next, 'exports'),
         error =>
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Экспорт данных', message: 'Произошла ошибка' }),
+          this.cts.emitNotife(TypeToast.Error, 'Экспорт данных', 'Произошла ошибка'),
         () =>
           this.fileIsPending = false
       );

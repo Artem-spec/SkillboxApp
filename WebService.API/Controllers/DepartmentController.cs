@@ -14,7 +14,7 @@ namespace WebService.API.Controllers
     /// <summary>
     /// обработка запросов получения данных по департаментам
     /// </summary>
-    [Route("department")]
+    [Route("api/department")]
     [ApiController]
     public class DepartmentController : ControllerBase
     {

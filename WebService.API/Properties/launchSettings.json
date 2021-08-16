@@ -21,7 +21,7 @@
     "StartApp": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "app",
+      "launchUrl": "",
       "environmentVariables": {
         "TYPE_WEB": "FullApp",
         "ASPNETCORE_ENVIRONMENT": "Development"

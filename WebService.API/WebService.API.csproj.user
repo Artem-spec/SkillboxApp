@@ -3,9 +3,9 @@
   <PropertyGroup>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/Api</Controller_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\work\skillbox\SkillBox\WebService.API\Properties\PublishProfiles\SkillBoxWebServiceAPI - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
     <ShowAllFiles>false</ShowAllFiles>
-    <ActiveDebugProfile>StartAPI</ActiveDebugProfile>
+    <ActiveDebugProfile>StartApp</ActiveDebugProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

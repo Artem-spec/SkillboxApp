@@ -34,11 +34,10 @@ export class DepartmentViewComponent implements OnInit, AfterViewInit {
     private departmentEventService: DepartmentEventService,
     private el: ElementRef,
     private workerService: WorkerService,
-    private departmentService: DepartmentService
-  ) { }
+    private departmentService: DepartmentService) { }
 
   ngOnInit() {
-    
+
     this.departmentEventService.getNewclickInnerDepartmentEventObs()
       .subscribe((nex: EventTarget) => {
 
@@ -98,12 +97,11 @@ export class DepartmentViewComponent implements OnInit, AfterViewInit {
           .subscribe(
             next => {
               if (next) {
-                this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Успешно' })
+                this.cts.emitNotife(TypeToast.Success, 'Успешно')
                 if (this.config)
                   this.departmentEventService.emiteUpdateChildrenEvent(this.config.parentId);
-              } else {
-                this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка' });
-              }
+              } else
+                this.cts.emitNotife(TypeToast.Error, 'Ошибка');
             },
             err => {
               this.el.nativeElement.remove();
@@ -113,15 +111,15 @@ export class DepartmentViewComponent implements OnInit, AfterViewInit {
           .subscribe(
             next => {
               if (next) {
-                this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Успешно' })
+                this.cts.emitNotife(TypeToast.Success, 'Успешно')
                 if (this.editetDepartment && this.config)
                   this.config.name = this.editetDepartment?.name;
                 this.cancelEdit();
-              } else {
-                this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка' });
-              }
+              } else
+                this.cts.emitNotife(TypeToast.Error, 'Ошибка');
             },
-            err => { this.cancelEdit(); });
+            err => this.cancelEdit()
+          );
       }
     }
   }
@@ -133,11 +131,10 @@ export class DepartmentViewComponent implements OnInit, AfterViewInit {
           .subscribe(
             next => {
               if (next) {
-                this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Успешно' })
+                this.cts.emitNotife(TypeToast.Success, 'Успешно')
                 this.el.nativeElement.remove();
-              } else {
-                this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка' });
-              }
+              } else
+                this.cts.emitNotife(TypeToast.Error, 'Ошибка');
             });
       }
   }

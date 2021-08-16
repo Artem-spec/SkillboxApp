@@ -1,11 +1,10 @@
-import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
+import { HttpParams, HttpRequest } from '@angular/common/http';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import * as moment from 'moment';
 import { CompackToastService, TypeToast } from 'ngx-compack';
 import { Observable, ReplaySubject, Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment';
 import { TodoRecordInfo } from '../model/todo-record-info';
 import { DateFIlterDto, GetToDoQuery, TodoRecordInfoDto } from '../model/todo-record-info-dto';
 import { TypeViewPeriodRecord } from '../model/type-view-period-record';
@@ -26,10 +25,10 @@ export class TodoRecordService {
   private dates: string[] = [];
 
   constructor(
-    private httpClient: HttpClient,
     private authService: AuthService,
     private cts: CompackToastService,
-    private apiService: ApiService) {
+    private apiService: ApiService,
+    @Inject('BASE_APP_URL') public urlApi: string) {
     moment.locale('ru');
     if (this.authService.checkLogIn())
       this.getToDoRecords(TypeViewPeriodRecord.Today, [])
@@ -64,7 +63,7 @@ export class TodoRecordService {
         next => {
           saveAs(next, 'exports');
         }, error => {
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Экспорт данных', message: 'Произошла ошибка' });
+          this.cts.emitNotife(TypeToast.Error, 'Экспорт данных', 'Произошла ошибка');
         }
       )
   }
@@ -73,7 +72,7 @@ export class TodoRecordService {
     const formData = new FormData();
     formData.append('file', file, file.name);
 
-    const req = new HttpRequest('POST', environment.urlApi + 'todo/import-file', formData, {
+    const req = new HttpRequest('POST', this.urlApi + 'todo/import-file', formData, {
       reportProgress: true,
       params: new HttpParams()
         .append('IdUser', this.authService.getUserId().toString())
@@ -82,10 +81,10 @@ export class TodoRecordService {
     this.apiService.doRequest(req)
       .subscribe(next => { },
         error => {
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Импорт записей', message: 'Произошла ошибка' });
+          this.cts.emitNotife(TypeToast.Error, 'Импорт записей', 'Произошла ошибка');
         },
         () => {
-          this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Импорт записей', message: 'Успешно' });
+          this.cts.emitNotife(TypeToast.Success, 'Импорт записей', 'Успешно');
           this.getToDoRecords(this.typeView, this.dates);
         });
   }
@@ -96,12 +95,10 @@ export class TodoRecordService {
     this.subs = this.apiService.put("todo", record, httpParams)
       .subscribe(
         next => {
-          this.cts.emitNewNotif(
-            { type: TypeToast.Success, title: 'Изменение заметки', message: 'Успешно' })
+          this.cts.emitNotife(TypeToast.Success, 'Изменение заметки', 'Успешно')
           this.getToDoRecords(this.typeView, this.dates);
         },
-        error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Изменение заметки', message: 'Произошла ошибка при получении списка заметок' }))
+        error => this.cts.emitNotife(TypeToast.Error, 'Изменение заметки', 'Произошла ошибка при получении списка заметок'))
   }
 
   public addNewRecord(record: TodoRecordInfo) {
@@ -110,12 +107,10 @@ export class TodoRecordService {
     this.subs = this.apiService.post("todo", record, httpParams)
       .subscribe(
         next => {
-          this.cts.emitNewNotif(
-            { type: TypeToast.Success, title: 'Добавление заметки', message: 'Успешно' })
+          this.cts.emitNotife(TypeToast.Success, 'Добавление заметки', 'Успешно')
           this.getToDoRecords(this.typeView, this.dates);
         },
-        error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Добавление заметки', message: 'Произошла ошибка при получении списка заметок' }))
+        error => this.cts.emitNotife(TypeToast.Error, 'Добавление заметки', 'Произошла ошибка при получении списка заметок'))
   }
 
   public removeRecord(idRecord: number) {
@@ -125,12 +120,10 @@ export class TodoRecordService {
     this.subs = this.apiService.delete("todo", httpParams)
       .subscribe(
         next => {
-          this.cts.emitNewNotif(
-            { type: TypeToast.Success, title: 'Удаление заметки', message: 'Успешно' })
+          this.cts.emitNotife(TypeToast.Success, 'Удаление заметки', 'Успешно')
           this.getToDoRecords(this.typeView, this.dates);
         },
-        error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Удаление заметки', message: 'Произошла ошибка при получении списка заметок' }))
+        error => this.cts.emitNotife(TypeToast.Error, 'Удаление заметки', 'Произошла ошибка при получении списка заметок'))
   }
 
   public getRecordsSubs(): Observable<TodoRecordInfo[]> {
@@ -162,8 +155,7 @@ export class TodoRecordService {
           this.posts$.next([]);
         }
       },
-        error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Список заметок', message: 'Произошла ошибка при получении списка заметок' }))
+        error => this.cts.emitNotife(TypeToast.Error, 'Список заметок', 'Произошла ошибка при получении списка заметок'))
   }
 
 }

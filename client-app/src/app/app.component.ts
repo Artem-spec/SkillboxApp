@@ -36,12 +36,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.bannerService.addNewMessage({
-      position: TypePositionMessage.TopRight,
-      typeMessage: TypeMessage.Info,
-      intervalView: 15,
-      message: 'Для авторизации: \n логин: admin \n пароль: complex'
-    });
+    this.bannerService.viewBanner(
+      TypeMessage.Info, TypePositionMessage.TopRight,
+      'Для авторизации: \n логин: admin \n пароль: complex', undefined, 15);
 
     this.abs.getEmiterChangeBar()
       .subscribe((next: any) => {

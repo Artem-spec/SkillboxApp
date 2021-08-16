@@ -18,14 +18,11 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private cts: CompackToastService,
-    public postService: PostService
-  ) { }
+    public postService: PostService) { }
 
   ngOnInit() {
     this.postService.getPostSubs()
-      .subscribe(
-        () => this.getCountPost()
-      );
+      .subscribe(() => this.getCountPost());
   }
 
   ngOnDestroy() {
@@ -36,8 +33,7 @@ export class InfoPanelComponent implements OnInit, OnDestroy {
   private getCountPost() {
     this.subs = this.apiService.get<number>("post/count")
       .subscribe(next => this.countPost = next,
-        error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Количество постов', message: 'Произошла ошибка при получении количества постов' }))
+        error => this.cts.emitNotife(TypeToast.Error, 'Количество постов', 'Произошла ошибка при получении количества постов'))
   }
 
 }

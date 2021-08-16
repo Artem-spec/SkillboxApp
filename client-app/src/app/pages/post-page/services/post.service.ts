@@ -12,9 +12,8 @@ import { Post } from '../model/post';
 export class PostService implements OnDestroy {
   // data
   private posts$: ReplaySubject<Post[]> = new ReplaySubject<Post[]>(1)
-  // emiters
+  // events
   private updateAllPost$: EventEmitter<boolean> = new EventEmitter();
-  // private addNewPost$: EventEmitter<boolean> = new EventEmitter();
   private cancelAddNewPost$: EventEmitter<boolean> = new EventEmitter();
   // http
   private subs: Subscription | null | undefined
@@ -65,8 +64,7 @@ export class PostService implements OnDestroy {
       .subscribe(posts => {
         this.posts$.next(posts);
       },
-        error => this.cts.emitNewNotif(
-          { type: TypeToast.Error, title: 'Список постов', message: 'Произошла ошибка при получении списка постов' }))
+        error => this.cts.emitNotife(TypeToast.Error, 'Список постов', 'Произошла ошибка при получении списка постов'))
   }
 
 }

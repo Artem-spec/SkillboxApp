@@ -14,7 +14,7 @@ namespace WebService.API.Controllers
     /// <summary>
     /// контроллер обрабатывающий запросы на получение информации по todo типу
     /// </summary>
-    [Route("todo")]
+    [Route("api/todo")]
     [ApiController]
     public class TodoController : ControllerBase
     {

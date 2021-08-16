@@ -1,16 +1,16 @@
 <div class="container_panel">
 
-
   <div class="expand_block" [ngClass]="{'closed':!navMenuisVisible, 'open':navMenuisVisible}">
 
     <span class="expand_block_title" (click)="this.navMenuisVisible = !this.navMenuisVisible;">
       Навигация
-      <ng-template [ngTemplateOutlet]="loadNavICon()"></ng-template>
+      <ng-template [ngTemplateOutlet]="loadNavIcon()"></ng-template>
     </span>
 
     <span class="btn_nav" routerLink='todo' routerLinkActive='actice'>todo</span>
     <span class="btn_nav" routerLink='post' routerLinkActive='actice'>post</span>
     <span class="btn_nav" routerLink='department' routerLinkActive='actice'>department</span>
+    <span class="btn_nav" routerLink='foot' routerLinkActive='actice'>football</span>
 
   </div>
 
@@ -24,11 +24,11 @@
     </span>
 
     <span class="btn_nav">
-      <a target="_blanck" href="https://github.com/PKkDev"> linck to author</a>
+      <a target="_blanck" [href]="linckToAuthor"> linck to author</a>
     </span>
 
     <span class="btn_nav">
-      <a target="_blanck" href="https://github.com/PKkDev/AngTzApp"> linck to code</a>
+      <a target="_blanck" [href]="linckToCode"> linck to code</a>
     </span>
 
     <span class="btn_nav">
@@ -36,8 +36,6 @@
     </span>
 
   </div>
-
-
 
 </div>
 

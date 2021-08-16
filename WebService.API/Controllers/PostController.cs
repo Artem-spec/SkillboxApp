@@ -17,7 +17,7 @@ namespace WebService.API.Controllers
     /// контроллер обработки постов
     /// </summary>
     [ApiController]
-    [Route("post")]
+    [Route("api/post")]
     public class PostController : Controller
     {
         private readonly IPostService _service;

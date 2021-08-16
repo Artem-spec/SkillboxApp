@@ -1,10 +1,9 @@
 import { HttpParams, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { CompackToastService, TypeToast } from 'ngx-compack';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
-import { environment } from 'src/environments/environment';
 import { DepartmentDto } from '../model/dto/department-dto';
 import { TypeWorkerFile } from '../model/dto/type-worker-file';
 import { Department } from '../model/entity/department';
@@ -16,7 +15,8 @@ export class DepartmentService {
   constructor(
     private workerService: WorkerService,
     private cts: CompackToastService,
-    private apiService: ApiService) { }
+    private apiService: ApiService,
+    @Inject('BASE_APP_URL') public urlApi: string) { }
 
   public LoadGlobalDepartment(): Observable<Department[]> {
     const url = 'department/children-dep'
@@ -40,7 +40,7 @@ export class DepartmentService {
           return newDep;
         }),
         catchError((err) => {
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Департаменты', message: 'Произошла ошибка при получении департаментов' })
+          this.cts.emitNotife(TypeToast.Error, 'Департаменты', 'Произошла ошибка при получении департаментов');
           throw err;
         }));
   }
@@ -70,7 +70,7 @@ export class DepartmentService {
           return newDep;
         }),
         catchError((err) => {
-          this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Департаменты', message: 'Произошла ошибка при получении департаментов' })
+          this.cts.emitNotife(TypeToast.Error, 'Департаменты', 'Произошла ошибка при получении департаментов');
           throw err;
         }));
   }
@@ -83,7 +83,7 @@ export class DepartmentService {
     };
     return this.apiService.put<boolean>(url, httpBody)
       .pipe(catchError((err) => {
-        this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка при изменении' })
+        this.cts.emitNotife(TypeToast.Error, 'Ошибка при изменении');
         throw err;
       }))
   }
@@ -96,7 +96,7 @@ export class DepartmentService {
     };
     return this.apiService.post<boolean>(url, httpBody)
       .pipe(catchError((err) => {
-        this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка при добавлении' })
+        this.cts.emitNotife(TypeToast.Error, 'Ошибка при добавлении');
         throw err;
       }))
   }
@@ -107,7 +107,7 @@ export class DepartmentService {
       .append('departmentId', idDepartment.toString());
     return this.apiService.delete<boolean>(url, param)
       .pipe(catchError((err) => {
-        this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Ошибка при удалении' })
+        this.cts.emitNotife(TypeToast.Error, 'Ошибка при удалении');
         throw err;
       }))
   }
@@ -130,7 +130,7 @@ export class DepartmentService {
       const formData = new FormData();
       formData.append('file', file, file.name);
 
-      const req = new HttpRequest('POST', environment.urlApi + 'department/import-file', formData, {
+      const req = new HttpRequest('POST', this.urlApi + 'department/import-file', formData, {
         reportProgress: true,
         params: new HttpParams()
           .append('departmentId', id.toString())
@@ -140,10 +140,10 @@ export class DepartmentService {
       this.apiService.doRequest(req)
         .subscribe(next => { },
           error => {
-            this.cts.emitNewNotif({ type: TypeToast.Error, title: 'Импорт записей', message: 'Произошла ошибка' });
+            this.cts.emitNotife(TypeToast.Error, 'Импорт записей', 'Произошла ошибка');
           },
           () => {
-            this.cts.emitNewNotif({ type: TypeToast.Success, title: 'Импорт записей', message: 'Успешно' });
+            this.cts.emitNotife(TypeToast.Success, 'Импорт записей', 'Успешно');
             this.LoadGlobalDepartment();
           });
     }
